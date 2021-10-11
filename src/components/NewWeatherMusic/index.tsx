@@ -1,16 +1,20 @@
 import React, {FormEvent, useState} from 'react'
 import {Container,ContainerInfo} from './style'
-
+import {listWeather} from '../../services/weather'
+import {WeatherInfoProps} from '../../services/types/typesWeather'
+import {useWeatherMusic} from '../../hooks/useWeatherMusic'
 
 
 export const NewWeatherMusic = () => {
+  const {getInfoWeather} = useWeatherMusic()
   const [cityName, setCityName] = useState('')
 
-
-  function handleGetCityName(event: FormEvent){
+  async function handleGetCityName(event: FormEvent){
     event.preventDefault()
+    
     if(cityName){
-      console.log(cityName)
+      const response = await listWeather(cityName)
+      getInfoWeather(response.data)
     }
     setCityName('')
   }
@@ -19,7 +23,7 @@ export const NewWeatherMusic = () => {
     <Container onSubmit={handleGetCityName}>
       <ContainerInfo>
         <h2>Cadastrar novas temperaturas</h2>
-        
+
         <input
           placeholder="Informe o nome da cidade"
           value={cityName}

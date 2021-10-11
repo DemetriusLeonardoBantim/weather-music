@@ -1,0 +1,1 @@
+import {apiRapid} from '../api'

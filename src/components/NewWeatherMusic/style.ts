@@ -13,6 +13,8 @@ export const ContainerInfo = styled.div`
   height: 25rem;
   width: 25rem;
   background: var(--shape);
+  -webkit-box-shadow: 4px 3px 15px 5px rgba(0,0,0,0.1); 
+  box-shadow: 4px 3px 15px 5px rgba(0,0,0,0.1);
   h2{
     color: var(--text-title);
     font-size: 1.2rem;
